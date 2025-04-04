@@ -1,0 +1,34 @@
+image: maven:3.9.6-eclipse-temurin-17  # Uses a valid Maven image with Java 17
+
+stages:
+  - test
+  - report
+
+cache:
+  paths:
+    - .m2/repository  # Caches Maven dependencies
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+before_script:
+  - echo "Installing dependencies..."
+  - mvn clean install  # Downloads dependencies and compiles the project
+
+test_api:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - mvn test  # Runs the tests
+  artifacts:
+    paths:
+      - target/surefire-reports/  # Saves test logs
+
+generate_allure_report:
+  stage: report
+  script:
+    - echo "Generating Allure report..."
+    - mvn allure:report  # Generates the Allure report
+  artifacts:
+    paths:
+      - target/site/allure-maven-plugin/  # Stores the generated report
