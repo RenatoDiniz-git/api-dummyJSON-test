@@ -1,90 +1,89 @@
-# Projeto de Automação de Testes de API
+# API Test Automation Project
 
-## 📌 Visão Geral do Projeto
+## 📌 Project Overview
 
-Este projeto é um framework de automação de testes de API construído utilizando **Java**, **RestAssured** e **JUnit 5**. Ele foi projetado para validar a funcionalidade de uma API que gerencia produtos eletrônicos. A automação cobre autenticação, recuperação de produtos e validação de respostas da API.
+This project is an API test automation framework built using **Java**, **RestAssured**, and **JUnit 5**. It is designed to validate the functionality of an API (DummyJSON - https://dummyjson.com/) that manages electronic products. The automation covers authentication, product retrieval, and API response validation.
 
-## 🚀 Como Executar os Testes
+## 🚀 How to Run the Tests
 
-### Pré-requisitos
+### Prerequisites
 
-Certifique-se de ter os seguintes requisitos instalados:
+Make sure you have the following requirements installed:
 
 - **Java 17**
 - **Maven**
 - **Git**
 
-### Passos para Execução
+### Execution Steps
 
-1. Clone o repositório:
+1. Clone the repository:
    ```sh
    git clone <repository-url>
    cd api-test-project
    ```
-2. Execute os testes com Maven:
+2. Run the tests with Maven:
    ```sh
    mvn test
    ```
-3. Gere os relatórios Allure (se habilitado):
+3. Generate Allure reports (if enabled):
    ```sh
    mvn allure:report
    ```
-4. Visualize o relatório Allure no navegador:
+4. View the Allure report in the browser:
    ```sh
    mvn allure:serve
    ```
 
-## 📝 Plano de Testes
+## 📝 Test Plan
 
-### Escopo
+### Scope
 
-O plano de testes inclui:
+The test plan includes:
 
-- Testes de autenticação (validação de login)
-- Testes de recuperação de produtos (obter todos os produtos, obter produto por ID)
-- Testes de disponibilidade da API
-- Validação de endpoints protegidos por autorização
+- Authentication tests (login validation)
+- Product retrieval tests (get all products, get product by ID)
+- API availability tests
+- Validation of endpoints protected by authorization
 
-### Cenários de Teste
+### Test Scenarios
 
-| Caso de Teste               | Descrição                                            | Resultado Esperado                      |
+| Test Case                   | Description                                          | Expected Result                         |
 | --------------------------- | ---------------------------------------------------- | --------------------------------------- |
-| Verificação de Saúde da API | Verificar se a API está operacional                  | Retorna 200 OK                          |
-| Autenticação de Usuário     | Validar login com credenciais corretas               | Retorna token de acesso                 |
-| Recuperar Todos os Produtos | Buscar todos os produtos da API                      | Retorna uma lista de produtos           |
-| Obter Produto por ID        | Buscar um produto específico por ID                  | Retorna os detalhes corretos do produto |
-| Acesso Não Autorizado       | Tentar acessar endpoints protegidos sem autenticação | Retorna 400                             |
-| Produto não existente       | Tentar acessar endpoint de produto com id invalido   | Retorna 400                             |
+| API Health Check            | Verify if the API is operational                    | Returns 200 OK                          |
+| User Authentication         | Validate login with correct credentials             | Returns access token                    |
+| Retrieve All Products       | Fetch all products from the API                     | Returns a list of products              |
+| Get Product by ID           | Fetch a specific product by ID                      | Returns the correct product details     |
+| Unauthorized Access         | Try to access protected endpoints without authentication | Returns 400                             |
+| Non-Existent Product        | Try to access a product endpoint with an invalid ID | Returns 400                             |
 
-## ✅ Testes Realizados
+## ✅ Tests Performed
 
-Os seguintes casos de teste foram implementados e executados:
+The following test cases have been implemented and executed:
 
-- **Verificação de Saúde da API** (validação do endpoint `/test`)
-- **Teste de Login** (garantindo que a autenticação funciona corretamente)
-- **Busca de Todos os Produtos** (validação do endpoint `/products`)
-- **Busca de Produto Específico por ID** (utilizando ID dinâmico)
-- **Teste de Adição de Produto** (verificando a criação de produto via API)
-- **Validação de Autorização** (garantindo que endpoints protegidos requerem autenticação)
+- **API Health Check** (validation of the `/test` endpoint)
+- **Login Test** (ensuring authentication works correctly)
+- **Fetch All Products** (validation of the `/products` endpoint)
+- **Fetch Specific Product by ID** (using a dynamic ID)
+- **Product Addition Test** (verifying product creation via API)
+- **Authorization Validation** (ensuring protected endpoints require authentication)
 
-### Usuários
-- **Buscar todos os usuários** (`testGetUsers`)
-- **Login com um usuário da API** (`testLogin`)
-- **Tentar login com usuário inexistente** (`testNonExistentUserLogin`)
+### Users
+- **Fetch all users** (`testGetUsers`)
+- **Login with an API user** (`testLogin`)
+- **Attempt login with a non-existent user** (`testNonExistentUserLogin`)
 
-### Produtos
-- **Buscar todos os produtos e armazenar um ID** (`allProducts`)
-- **Buscar um produto específico pelo ID** (`testProductWithId`)
-- **Adicionar um produto** (`testAddProduct`)
-- **Buscar produtos autenticado** (`testGetAuthProducts`)
-- **Tentar buscar um produto com token inválido** (`testGetProductWithInvalidToken`)
-- **Tentar buscar um produto inexistente** (`testGetNonExistentProduct`)
+### Products
+- **Fetch all products and store an ID** (`allProducts`)
+- **Fetch a specific product by ID** (`testProductWithId`)
+- **Add a product** (`testAddProduct`)
+- **Fetch products while authenticated** (`testGetAuthProducts`)
+- **Attempt to fetch a product with an invalid token** (`testGetProductWithInvalidToken`)
+- **Attempt to fetch a non-existent product** (`testGetNonExistentProduct`)
 
-### Resumo da Execução dos Testes
+### Test Execution Summary
 
-- Todos os testes foram executados com sucesso ✅
-- Relatórios Allure disponíveis em `target/site/allure-maven-plugin/`
+- All tests were successfully executed ✅
+- Allure reports available at `target/site/allure-maven-plugin/`
 
 ---
-
 
